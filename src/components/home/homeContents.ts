@@ -8,7 +8,7 @@ const homeContents: Array<{
   img_url: any;
 }> = [
   {
-    heading: "E-Learning Experience",
+    heading: "Student-Centered Learning",
     p: "A platform that puts the students first, a platform that combines engaging explanation videos, course relevant tests and quizzes with an interactive forum where we promote an environment conducive to learning. ",
     btnTxt: "Learn More",
     img_url: photo1,

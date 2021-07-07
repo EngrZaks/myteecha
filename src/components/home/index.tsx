@@ -6,6 +6,8 @@ import logo from "../../assets/logo_transparent.png";
 import { Button, Form, Input } from "antd";
 import { DesktopNav, MobileNav } from "./nav";
 import Sections from "./sections";
+import Footer from "./footer";
+
 const Home: React.FC = () => {
   return (
     <div className="home">
@@ -34,6 +36,7 @@ const Home: React.FC = () => {
           </p>
         </Form>
       </section>
+      <Footer />
     </div>
   );
 };

@@ -8,16 +8,56 @@ $btn_border: 16px;
   section:nth-of-type(odd) {
     background-color: $dark-color;
   }
+  section:nth-of-type(even) {
+    button {
+      color: white;
+      background-color: black;
+    }
+  }
   section {
     padding: 5px;
     h2 {
       font-weight: bold;
+    }
+
+    .image {
+      width: 100%;
+      // max-width: 400px;
+      margin: 0 auto;
+      text-align: center;
+      img {
+        max-width: 180px;
+        // margin: 0 auto;
+      }
     }
     button {
       border-radius: $sm_border;
       padding: 3px 6px;
       background: rgba(255, 255, 255, 0.212);
       border: 1px solid gray;
+    }
+  }
+  .student {
+    h2 {
+      font-weight: bolder;
+      font-size: 1.6rem;
+    }
+  }
+  article {
+    padding: 10px;
+  }
+  .interactive {
+    max-width: 700px;
+    text-align: center;
+    margin: 0 auto;
+  }
+
+  .engage {
+    .image {
+      align-items: center;
+      img {
+        max-width: 150px;
+      }
     }
   }
   nav {
@@ -48,7 +88,7 @@ $btn_border: 16px;
     display: flex;
     align-items: center;
     // align-content: space-between;
-    justify-content:space-between
+    justify-content: space-between;
 
     // display: flex;
     // flex-wrap: wrap;
@@ -64,7 +104,57 @@ $btn_border: 16px;
       padding: 15px;
     }
   }
+  .newslater {
+    // display: block;
+    // text-align: center;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    form {
+      text-align: center;
+      input {
+        border-top: 0;
+        border-left: 0;
+        border-right: 0;
+      }
+      button {
+        background: $base-color;
+        color: black;
+      }
+    }
+  }
+
+  // media queries for tablet screens and above
+  @media only screen and (min-width: 480px) {
+    section {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      .image {
+        img {
+          max-width: 300px;
+        }
+      }
+      .varieties {
+        display: flex;
+        * {
+          padding: 5px;
+        }
+        p {
+          margin-left: 5px;
+        }
+      }
+    }
+    section:nth-of-type(odd) {
+      flex-direction: row-reverse;
+    }
+    // .newslater {
+    //   display: block;
+    //   text-align: center;
+    // }
+  }
 }
-button {
-  // z-index: 10;
+
+// media queries for small laptop screens and above
+@media only screen and (min-width: 768px) {
 }
