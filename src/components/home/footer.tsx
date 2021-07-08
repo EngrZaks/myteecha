@@ -5,7 +5,6 @@ import {
   LinkedinFilled,
   TwitterCircleFilled,
 } from "@ant-design/icons";
-import { Link } from "react-router-dom";
 import footerLogo from "../../assets/botomLogo.png";
 export default function Footer() {
   return (
@@ -13,7 +12,9 @@ export default function Footer() {
       <div className="image">
         <img src={footerLogo} alt="footer logo" />
       </div>
-      <Button>Get Started</Button>
+      <Button shape="round" className="start">
+        Get Started
+      </Button>
       <div className="links">
         <Button>ABOUT US</Button>
         <Button>TERMS AND CONDITIONS</Button>

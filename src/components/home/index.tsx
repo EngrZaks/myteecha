@@ -8,7 +8,7 @@ import { DesktopNav, MobileNav } from "./nav";
 import Sections from "./sections";
 import Footer from "./footer";
 
-const Home: React.FC = () => {
+const LandindPage: React.FC = () => {
   return (
     <div className="home">
       {useWindowSize().width > 600 ? (
@@ -28,7 +28,7 @@ const Home: React.FC = () => {
           >
             <Input />
           </Form.Item>
-          <Button type="primary" htmlType="submit">
+          <Button shape="round" type="primary" htmlType="submit">
             Subscribe
           </Button>
           <p>
@@ -40,4 +40,4 @@ const Home: React.FC = () => {
     </div>
   );
 };
-export default Home;
+export default LandindPage;

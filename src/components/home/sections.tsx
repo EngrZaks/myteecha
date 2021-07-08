@@ -1,5 +1,5 @@
 import React from "react";
-import { Button } from "antd";
+// import { Button } from "antd";
 import homeContents from "./homeContents";
 interface section {
   heading: string;
@@ -38,7 +38,7 @@ const Section: React.FC<section> = ({ heading, p, btnTxt, img_url }) => {
             {" "}
             <button
               onClick={() => console.log("click")}
-              style={{ borderRadius: 10 }}
+              style={{ borderRadius: 16 }}
             >
               {btnTxt}
             </button>
