@@ -1,6 +1,6 @@
 import React from "react";
 import "./style.scss";
-import useWindowSize from "../../utils/useWindowSize";
+import { useMediaQuery } from "react-responsive";
 import logo from "../../assets/logo_transparent.png";
 // import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { Button, Form, Input } from "antd";
@@ -9,13 +9,10 @@ import Sections from "./sections";
 import Footer from "./footer";
 
 const LandindPage: React.FC = () => {
+  const isMobile = useMediaQuery({ query: "(max-width: 480px)" });
   return (
     <div className="home">
-      {useWindowSize().width > 600 ? (
-        <DesktopNav logo={logo} />
-      ) : (
-        <MobileNav logo={logo} />
-      )}
+      {isMobile ? <MobileNav logo={logo} /> : <DesktopNav logo={logo} />}
       <Sections />
       <section className="newslater">
         <h2>MyTeecha</h2>
