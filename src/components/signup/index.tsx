@@ -1,41 +1,52 @@
 import React from "react";
-import { Modal, Button } from "antd";
+import { useSelector, useDispatch } from "react-redux";
+import { bindActionCreators } from "redux";
+import { Modal } from "antd";
 
+import { actionCreators } from "../../state";
+import SignupForm from "./signupForm";
 const SignUp = () => {
-  const [visible, setVisible] = React.useState(false);
-  const [confirmLoading, setConfirmLoading] = React.useState(false);
-  const [modalText, setModalText] = React.useState("Content of the modal");
+  // const [visible, setVisible] = React.useState(false);
+  const dispatch = useDispatch();
+  const signup = useSelector((state: any) => state.signup);
+  const { displaySigUp, closeSigUp } = bindActionCreators(
+    actionCreators,
+    dispatch
+  );
 
-  const showModal = () => {
-    setVisible(true);
-  };
+  const [confirmLoading, setConfirmLoading] = React.useState(false);
+  const [modalText, setModalText] = React.useState("");
 
   const handleOk = () => {
-    setModalText("The modal will be closed after two seconds");
+    setModalText("Redirecting to your dashboard...");
     setConfirmLoading(true);
     setTimeout(() => {
-      setVisible(false);
+      // setVisible(false);
+      closeSigUp();
       setConfirmLoading(false);
     }, 2000);
   };
 
   const handleCancel = () => {
     console.log("Clicked cancel button");
-    setVisible(false);
+    // setVisible(false);
+    closeSigUp();
   };
 
   return (
     <>
-      <Button type="primary" onClick={showModal}>
-        Open Modal with async logic
-      </Button>
       <Modal
-        title="Title"
-        visible={visible}
+        visible={signup}
         onOk={handleOk}
         confirmLoading={confirmLoading}
         onCancel={handleCancel}
+        footer={null}
       >
+        <div style={{ textAlign: "center", margin: "2em" }}>
+          <h1 style={{ fontWeight: "bold" }}>Sign Up</h1>
+          <p>Learn better through a wide variety of educational programs.</p>
+        </div>
+        <SignupForm />
         <p>{modalText}</p>
       </Modal>
     </>

@@ -5,15 +5,24 @@ import "antd/dist/antd.css";
 import { MenuOutlined } from "@ant-design/icons";
 import { Menu } from "antd";
 const { SubMenu } = Menu;
-export const MobileNav: React.FC<{ logo: any }> = ({ logo }) => {
+interface singinSignupParams {
+  logo: any;
+  showSignup: any;
+  showSignin: any;
+}
+export const MobileNav: React.FC<singinSignupParams> = ({
+  logo,
+  showSignup,
+  showSignin,
+}) => {
   // const windowWidth = useWindowSize().width;
   return (
     <nav>
       <Menu
         className="menu"
         style={{ width: "100%", padding: 5, zIndex: 1 }}
-        defaultSelectedKeys={["1"]}
-        defaultOpenKeys={["sub1"]}
+        defaultSelectedKeys={[""]}
+        defaultOpenKeys={[""]}
         mode="inline"
       >
         <div className="logo">
@@ -29,10 +38,14 @@ export const MobileNav: React.FC<{ logo: any }> = ({ logo }) => {
               <Link to="for-student">For Student</Link>
             </Menu.Item>
             <Menu.Item key="3">
-              <Link to="login">Log in</Link>
+              <Link to="/" onClick={showSignin}>
+                Log in
+              </Link>
             </Menu.Item>
             <Menu.Item key="4">
-              <Link to="signup">Sign Up</Link>
+              <Link to="/" onClick={showSignup}>
+                Sign Up
+              </Link>
             </Menu.Item>
             <Menu.Item key="5">
               <Link to="contact">Contact Us</Link>
@@ -44,7 +57,11 @@ export const MobileNav: React.FC<{ logo: any }> = ({ logo }) => {
   );
 };
 
-export const DesktopNav: React.FC<{ logo: any }> = ({ logo }) => {
+export const DesktopNav: React.FC<singinSignupParams> = ({
+  logo,
+  showSignin,
+  showSignup,
+}) => {
   return (
     <nav className="desktop-nav">
       <div className="logo">
@@ -54,19 +71,23 @@ export const DesktopNav: React.FC<{ logo: any }> = ({ logo }) => {
       <Router>
         <ul>
           <li>
-            <Link to="explore">Explore</Link>
+            <Link to="/explore">Explore</Link>
           </li>
           <li>
-            <Link to="for-student">For Student</Link>
+            <Link to="/for-student">For Student</Link>
           </li>
           <li>
-            <Link to="login">Log in</Link>
+            <Link to="/" onClick={showSignin}>
+              Log in
+            </Link>
           </li>
           <li>
-            <Link to="signup">Sign Up</Link>
+            <Link to="/" onClick={showSignup}>
+              Sign Up
+            </Link>
           </li>
           <li>
-            <Link to="contact">Contact Us</Link>
+            <Link to="/contact">Contact Us</Link>
           </li>
         </ul>
       </Router>

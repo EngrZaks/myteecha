@@ -3,16 +3,47 @@ import "./style.scss";
 import { useMediaQuery } from "react-responsive";
 import logo from "../../assets/logo_transparent.png";
 // import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { bindActionCreators } from "redux";
+import { actionCreators } from "../../state";
 import { Button, Form, Input } from "antd";
 import { DesktopNav, MobileNav } from "./nav";
 import Sections from "./sections";
 import Footer from "./footer";
+import SignUp from "../signup";
+import LogIn from "../signin";
 
 const LandindPage: React.FC = () => {
-  const isMobile = useMediaQuery({ query: "(max-width: 480px)" });
+  const isMobile = useMediaQuery({ query: "(max-width: 600px)" });
+  const dispatch = useDispatch();
+  const signup = useSelector((state: any) => state.signup);
+  const { displaySigUp, displaySignIn } = bindActionCreators(
+    actionCreators,
+    dispatch
+  );
   return (
     <div className="home">
-      {isMobile ? <MobileNav logo={logo} /> : <DesktopNav logo={logo} />}
+      {isMobile ? (
+        <MobileNav
+          logo={logo}
+          showSignin={displaySignIn}
+          showSignup={displaySigUp}
+        />
+      ) : (
+        <DesktopNav
+          logo={logo}
+          showSignin={displaySignIn}
+          showSignup={displaySigUp}
+        />
+      )}
+      {/* <Router>
+        <Switch>
+          <Route exact path="/login" component={LogIn} />
+          <Route exact path="/signup" component={SignUp} />
+        </Switch>
+      </Router> */}
+      <LogIn />
+      <SignUp />
       <Sections />
       <section className="newslater">
         <h2>MyTeecha</h2>
