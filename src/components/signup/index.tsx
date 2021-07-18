@@ -9,10 +9,7 @@ const SignUp = () => {
   // const [visible, setVisible] = React.useState(false);
   const dispatch = useDispatch();
   const signup = useSelector((state: any) => state.signup);
-  const { displaySigUp, closeSigUp } = bindActionCreators(
-    actionCreators,
-    dispatch
-  );
+  const { closeSigUp } = bindActionCreators(actionCreators, dispatch);
 
   const [confirmLoading, setConfirmLoading] = React.useState(false);
   const [modalText, setModalText] = React.useState("");

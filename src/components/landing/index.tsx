@@ -17,6 +17,8 @@ const LandindPage: React.FC = () => {
   const isMobile = useMediaQuery({ query: "(max-width: 600px)" });
   const dispatch = useDispatch();
   const signup = useSelector((state: any) => state.signup);
+  console.log(signup);
+
   const { displaySigUp, displaySignIn } = bindActionCreators(
     actionCreators,
     dispatch

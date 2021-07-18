@@ -1,5 +1,5 @@
 import React from "react";
-import { Modal, Button } from "antd";
+import { Modal } from "antd";
 import { useSelector, useDispatch } from "react-redux";
 import { bindActionCreators } from "redux";
 import { actionCreators } from "../../state";
@@ -8,10 +8,7 @@ const SignIn = () => {
   // const [visible, setVisible] = React.useState(false);
   const dispatch = useDispatch();
   const signin = useSelector((state: any) => state.signin);
-  const { displaySignIn, closeSignIn } = bindActionCreators(
-    actionCreators,
-    dispatch
-  );
+  const { closeSignIn } = bindActionCreators(actionCreators, dispatch);
 
   const [confirmLoading, setConfirmLoading] = React.useState(false);
 
