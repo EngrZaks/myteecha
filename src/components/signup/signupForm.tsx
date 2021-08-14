@@ -1,15 +1,38 @@
+import { useState } from "react";
+import axios from "axios";
 import { useMediaQuery } from "react-responsive";
-
 import { FacebookOutlined, GoogleOutlined } from "@ant-design/icons";
 import { Form, Input, Button } from "antd";
+import { BACKEND_URL } from "../constants";
 
 const SignupForm = () => {
-  const onFinish = (values: any) => {
-    console.log("Success:", values);
+  const [Loading, setLoading] = useState(false);
+  const [ErrorMsg, setErrorMsg] = useState("");
+
+  const onFinish = async (values: any) => {
+    setErrorMsg("");
+    setLoading(true);
+    values.role = "student";
+    try {
+      await axios.post(BACKEND_URL + "/signup", values).then(
+        (response) => {
+          console.log(response.data);
+          setLoading(false);
+        },
+        (error) => {
+          setErrorMsg(error.response.data);
+          setLoading(false);
+        }
+      );
+    } catch (error) {
+      setErrorMsg("server temporarily down 😢 please try again later 🙏");
+      setLoading(false);
+    }
   };
 
   const onFinishFailed = (errorInfo: any) => {
     console.log("Failed:", errorInfo);
+    setLoading(false);
   };
 
   const isMobile = useMediaQuery({ query: "(max-width: 600px)" });
@@ -35,7 +58,7 @@ const SignupForm = () => {
         name="email"
         rules={[{ required: true, message: "Please input your email!" }]}
       >
-        <Input />
+        <Input type="email" />
       </Form.Item>
       <Form.Item
         label="PASSWORD"
@@ -44,8 +67,23 @@ const SignupForm = () => {
       >
         <Input.Password />
       </Form.Item>
+      {ErrorMsg && (
+        <div
+          className="error"
+          style={{
+            color: "red",
+            textAlign: "center",
+            border: "2px solid #e3e3e3",
+            margin: "5px auto",
+            padding: 5,
+            fontWeight: "bold",
+          }}
+        >
+          {ErrorMsg}
+        </div>
+      )}
       <Form.Item label={socialLabel}>
-        <Button block type="primary" htmlType="submit">
+        <Button loading={Loading} block type="primary" htmlType="submit">
           Join for Free
         </Button>
       </Form.Item>

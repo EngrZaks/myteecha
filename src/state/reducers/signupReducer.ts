@@ -19,3 +19,12 @@ export const toggleSignIn = (state: Boolean = false, action: any) => {
       return state;
   }
 };
+
+// export const userReducer = (state = {}, action:any) => {
+//   switch (action.type) {
+//     case "setUser":
+//       return { ...state, action.payload};
+//     default:
+//       break;
+//   }
+// };

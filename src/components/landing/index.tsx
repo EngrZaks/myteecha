@@ -52,11 +52,13 @@ const LandindPage: React.FC = () => {
         <p>Want MyTeecha's email newslater?</p>
         <Form>
           <Form.Item
-            label="Username"
             name="username"
-            rules={[{ required: true, message: "Please input your username!" }]}
+            rules={[{ required: true, message: "Please input your email!" }]}
           >
-            <Input />
+            <Input
+              placeholder="Your email address"
+              style={{ textAlign: "center" }}
+            />
           </Form.Item>
           <Button shape="round" type="primary" htmlType="submit">
             Subscribe
