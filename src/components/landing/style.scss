@@ -1,18 +1,4 @@
-$base-color: #ddedf2;
-$light-color: #fff;
-$dark-color: #89c5cc65;
-$lg_border: 33px;
-$sm_border: 6px;
-$btn_border: 16px;
-$footer-color: #89c5cc;
-$black-color: #373435;
-@mixin central-flex($justify, $direction: "") {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: $direction;
-  justify-content: $justify;
-}
+@import "../base.scss";
 .home {
   section:nth-of-type(odd) {
     background-color: $dark-color;
@@ -76,6 +62,7 @@ $black-color: #373435;
     }
   }
   nav {
+    z-index: 100;
     position: sticky;
     top: 0;
     background-color: $base-color;
@@ -87,11 +74,15 @@ $black-color: #373435;
       }
     }
     .logo {
-      width: 30%;
+      // width: 30%;
+      text-align: center;
       max-width: 250px;
       margin: 0 auto;
       img {
-        width: 100%;
+        width: 150px;
+        height: 80px;
+        object-fit: cover;
+        // background-color: #373435;
       }
     }
   }
@@ -122,6 +113,13 @@ $black-color: #373435;
   }
 
   footer {
+    .image {
+      text-align: center;
+      max-width: 200px;
+      img {
+        width: 100%;
+      }
+    }
     background: $footer-color;
     @include central-flex(center, column);
     .links {
@@ -176,6 +174,12 @@ $black-color: #373435;
         button {
           margin: 15px;
           font-weight: 600;
+        }
+      }
+      .image {
+        max-width: 200px;
+        img {
+          width: 100%;
         }
       }
     }

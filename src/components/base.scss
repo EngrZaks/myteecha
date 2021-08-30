@@ -1,0 +1,15 @@
+$base-color: #ddedf2;
+$light-color: #fff;
+$dark-color: #89c5cc65;
+$lg_border: 33px;
+$sm_border: 6px;
+$btn_border: 16px;
+$footer-color: #89c5cc;
+$black-color: #373435;
+@mixin central-flex($justify, $direction: "") {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: $direction;
+  justify-content: $justify;
+}

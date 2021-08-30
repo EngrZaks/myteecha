@@ -1,9 +1,10 @@
 import { useState } from "react";
 import axios from "axios";
-import { FacebookOutlined, GoogleOutlined } from "@ant-design/icons";
 import { Form, Input, Button } from "antd";
 import { useMediaQuery } from "react-responsive";
 import { BACKEND_URL } from "../constants";
+import { FcGoogle } from "react-icons/fc";
+import { GrFacebook } from "react-icons/gr";
 const SigninForm = () => {
   const [Loading, setLoading] = useState(false);
   const [ErrorMsg, setErrorMsg] = useState("");
@@ -80,7 +81,7 @@ const SigninForm = () => {
       )}
       <Form.Item label={socialLabel}>
         <Button block type="default" style={{ marginTop: "1em" }}>
-          <GoogleOutlined
+          <FcGoogle
             style={{
               marginRight: "4em",
               color: "#ea4335",
@@ -91,7 +92,7 @@ const SigninForm = () => {
       </Form.Item>
       <Form.Item label={socialLabel}>
         <Button block type="default">
-          <FacebookOutlined
+          <GrFacebook
             style={{
               marginRight: "3em",
               color: "#4267B2",

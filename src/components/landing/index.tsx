@@ -1,7 +1,7 @@
 import React from "react";
 import "./style.scss";
 import { useMediaQuery } from "react-responsive";
-import logo from "../../assets/logo_transparent.png";
+import logo from "../../assets/leg_logo_real_2.png";
 // import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { bindActionCreators } from "redux";

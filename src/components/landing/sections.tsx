@@ -38,7 +38,7 @@ const Section: React.FC<section> = ({ heading, p, btnTxt, img_url }) => {
             {" "}
             <button
               onClick={() => console.log("click")}
-              style={{ borderRadius: 16 }}
+              style={{ borderRadius: 10 }}
             >
               {btnTxt}
             </button>

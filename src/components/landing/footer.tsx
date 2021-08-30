@@ -5,7 +5,7 @@ import {
   LinkedinFilled,
   TwitterCircleFilled,
 } from "@ant-design/icons";
-import footerLogo from "../../assets/botomLogo.png";
+import footerLogo from "../../assets/bottomlogo.png";
 export default function Footer() {
   return (
     <footer>

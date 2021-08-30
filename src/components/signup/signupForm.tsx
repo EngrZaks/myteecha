@@ -1,29 +1,67 @@
 import { useState } from "react";
-import axios from "axios";
 import { useMediaQuery } from "react-responsive";
-import { FacebookOutlined, GoogleOutlined } from "@ant-design/icons";
-import { Form, Input, Button } from "antd";
-import { BACKEND_URL } from "../constants";
+import { FcGoogle } from "react-icons/fc";
+import { GrFacebook } from "react-icons/gr";
 
+import { Form, Input, Button } from "antd";
+import firebase from "../../firebase";
+// import { useAuthState } from "react-firebase-hooks/auth";
+// import { useCollectionData } from "react-firebase-hooks/firestore";
+const auth = firebase.auth();
+// const firestore = firebase.firestore();
 const SignupForm = () => {
   const [Loading, setLoading] = useState(false);
   const [ErrorMsg, setErrorMsg] = useState("");
+  const authWith =
+    (service?: string, email?: string, password?: string, name?: string) =>
+    (event: any) => {
+      if (email && password && name) {
+        firebase
+          .auth()
+          .createUserWithEmailAndPassword(email, password)
+          .then((userCredential) => {
+            console.log(userCredential.user);
+          })
+          .catch((error) => {
+            console.log(error.code, error.message);
+            setErrorMsg(error.message);
+          });
+      } else {
+        const provider =
+          service === "google"
+            ? new firebase.auth.GoogleAuthProvider()
+            : new firebase.auth.FacebookAuthProvider();
 
+        auth.signInWithPopup(provider);
+      }
+    };
   const onFinish = async (values: any) => {
     setErrorMsg("");
     setLoading(true);
     values.role = "student";
     try {
-      await axios.post(BACKEND_URL + "/signup", values).then(
-        (response) => {
-          console.log(response.data);
+      // await axios.post(BACKEND_URL + "/signup", values).then(
+      //   (response) => {
+      //     console.log(response.data);
+      //     setLoading(false);
+      //   },
+      //   (error) => {
+      //     setErrorMsg(error.response.data);
+      //     setLoading(false);
+      //   }
+      // );
+      firebase
+        .auth()
+        .createUserWithEmailAndPassword(values.email, values.password)
+        .then((userCredential) => {
+          console.log(userCredential.user);
           setLoading(false);
-        },
-        (error) => {
-          setErrorMsg(error.response.data);
+        })
+        .catch((error) => {
+          console.log(error.code, error.message);
+          setErrorMsg(error.message);
           setLoading(false);
-        }
-      );
+        });
     } catch (error) {
       setErrorMsg("server temporarily down 😢 please try again later 🙏");
       setLoading(false);
@@ -89,25 +127,30 @@ const SignupForm = () => {
       </Form.Item>
 
       <Form.Item label={socialLabel}>
-        <Button block type="default" style={{ marginTop: "1em" }}>
-          <GoogleOutlined
+        <Button
+          onClick={authWith("google")}
+          block
+          type="default"
+          style={{ marginTop: "1em" }}
+        >
+          <FcGoogle
             style={{
               marginRight: "4em",
               color: "#ea4335",
             }}
           />
-          Sign Up with Google
+          Continue with Google
         </Button>{" "}
       </Form.Item>
       <Form.Item label={socialLabel}>
-        <Button block type="default">
-          <FacebookOutlined
+        <Button onClick={authWith("facebook")} block type="default">
+          <GrFacebook
             style={{
               marginRight: "3em",
               color: "#4267B2",
             }}
           />{" "}
-          Sign Up with Facebook
+          Continue with Facebook
         </Button>
       </Form.Item>
     </Form>

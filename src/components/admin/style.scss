@@ -1,0 +1,37 @@
+.admin {
+  // height: 100vh;
+  // display: flex;
+  // align-items: center;
+  // justify-content: center;
+  // flex-direction: column;
+  max-width: 800px;
+  margin: 0 auto;
+  .profile {
+    img {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+    .name {
+      font-weight: bold;
+    }
+  }
+  .courses {
+    .course {
+      margin: 2em 0;
+      // background-color: red;
+      h2 {
+        text-align: center;
+      }
+
+      .image {
+        max-width: 500px;
+        margin: 0 auto;
+        img {
+          width: 100%;
+        }
+      }
+    }
+  }
+}

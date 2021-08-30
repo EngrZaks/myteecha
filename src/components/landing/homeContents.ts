@@ -9,7 +9,7 @@ const homeContents: Array<{
 }> = [
   {
     heading: "Student-Centered Learning",
-    p: "A platform that puts the students first, a platform that combines engaging explanation videos, course relevant tests and quizzes with an interactive forum where we promote an environment conducive to learning. ",
+    p: "A platform that puts the students first,  We combine engaging explanation videos, course relevant tests and quizzes with an interactive forum where we promote an environment conducive to learning.",
     btnTxt: "Learn More",
     img_url: photo1,
   },
