@@ -9,21 +9,36 @@ import {
   HashRouter,
   BrowserRouter as Router,
   Switch,
+  Link,
 } from "react-router-dom";
 import Admin from "./components/admin";
 import Explore from "./components/dashboard/explore/explore";
+import { DesktopMenu, MobileMenu } from "./components/dashboard/menu";
+import { useMediaQuery } from "react-responsive";
+import { Skeleton } from "antd";
 const auth = firebase.auth();
 // firebase.analytics();
 function App() {
+  const isMobile = useMediaQuery({ query: "(max-width: 600px)" });
+
   const [user] = useAuthState(auth);
   const AppComponent = () => (
     <div className="App">{user ? <Dashboard user={user} /> : <Home />}</div>
   );
-  const Go = () => {
-    return <h1>hello world let's go there</h1>;
+  const Menu = () => {
+    return (
+      <div>
+        {isMobile ? (
+          <MobileMenu user={user} />
+        ) : (
+          <DesktopMenu user={user} auth={auth} />
+        )}
+      </div>
+    );
   };
   return (
     <Router>
+      {user ? <Menu /> : ""}
       <Switch>
         <Route exact path="/admin">
           <Admin />

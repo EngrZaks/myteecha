@@ -103,25 +103,23 @@ export function DesktopMenu({ user, auth }: { user: any; auth: any }) {
 export const MobileMenu = ({ user }: { user: any }) => {
   return (
     <div className="MobileMenu">
-      <Router>
-        <div className="menu">
-          <NavLink activeClassName="active" to="/explore">
-            <HiOutlineSearchCircle />{" "}
-          </NavLink>
-          <NavLink activeClassName="active" to="/courses">
-            <BsBook />{" "}
-          </NavLink>
-          <NavLink activeClassName="active" to="/forum">
-            <MdForum />{" "}
-          </NavLink>
-          <NavLink activeClassName="active" to="/reviews">
-            <AiOutlineStar />{" "}
-          </NavLink>
-          <NavLink activeClassName="active" to="/profile">
-            <img src={user.photoURL} alt="" />
-          </NavLink>
-        </div>
-      </Router>
+      <div className="menu">
+        <NavLink activeClassName="active" to="/explore">
+          <HiOutlineSearchCircle />{" "}
+        </NavLink>
+        <NavLink activeClassName="active" to="/courses">
+          <BsBook />{" "}
+        </NavLink>
+        <NavLink activeClassName="active" to="/forum">
+          <MdForum />{" "}
+        </NavLink>
+        <NavLink activeClassName="active" to="/reviews">
+          <AiOutlineStar />{" "}
+        </NavLink>
+        <NavLink activeClassName="active" to="/profile">
+          <img src={user.photoURL} alt="" />
+        </NavLink>
+      </div>
     </div>
   );
 };

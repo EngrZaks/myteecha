@@ -13,15 +13,15 @@ export default function Dashboard({ user }: { user: any }) {
   return (
     <Router>
       <div className="dashboard">
-        {isMobile ? (
+        {/* {isMobile ? (
           <MobileMenu user={user} />
         ) : (
           <DesktopMenu user={user} auth={auth} />
-        )}
+        )} */}
       </div>
       <Switch>
         <Route exact path="/explore">
-          {/* <Explore user={user} /> */}
+          <Explore user={user} />
         </Route>
       </Switch>
     </Router>
