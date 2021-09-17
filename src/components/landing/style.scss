@@ -189,6 +189,28 @@
       @include backgroundRCC();
       z-index: -1;
     }
+    p:after {
+      content: "";
+      position: absolute;
+      bottom: 10%;
+      right: 0%;
+      background: url("../../assets/Ellipse\ 4.png");
+      width: 30%;
+      height: 30%;
+      @include backgroundRCC();
+      z-index: -1;
+    }
+    h2:before {
+      content: "";
+      position: absolute;
+      top: 30%;
+      left: 0%;
+      background: url("../../assets/Ellipse\ 4.png");
+      width: 20%;
+      height: 20%;
+      @include backgroundRCC();
+      z-index: -1;
+    }
     form {
       text-align: center;
       input {
