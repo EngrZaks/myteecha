@@ -1,5 +1,11 @@
 @import "../base.scss";
+@mixin backgroundRCC {
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
 .home {
+  font-size: 1rem;
   section:nth-of-type(odd) {
     background-color: $dark-color;
   }
@@ -48,18 +54,90 @@
     padding: 10px;
   }
   .interactive {
+    position: relative;
     max-width: 700px;
     text-align: center;
     margin: 0 auto;
+
+    h2::before {
+      content: "";
+      position: absolute;
+      top: 0%;
+      left: 0%;
+      background: url("../../assets/Ellipse\ 3.png");
+      width: 20%;
+      height: 20%;
+      @include backgroundRCC();
+      z-index: -1;
+    }
+    h2::after {
+      content: "";
+      position: absolute;
+      top: 0%;
+      right: 0%;
+      background: url("../../assets/Ellipse\ 4.png");
+      width: 20%;
+      height: 20%;
+      @include backgroundRCC();
+      z-index: -1;
+    }
+    p:before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: url("../../assets/Ellipse\ 3.png");
+      width: 50%;
+      height: 50%;
+      @include backgroundRCC();
+      z-index: -1;
+    }
+    button::before {
+      content: "";
+      position: absolute;
+      bottom: 0%;
+      left: 0%;
+      background: url("../../assets/Ellipse\ 4.png");
+      width: 20%;
+      height: 20%;
+      @include backgroundRCC();
+      z-index: -1;
+    }
+    button::after {
+      content: "";
+      position: absolute;
+      top: 80%;
+      right: 0%;
+      background: url("../../assets/Ellipse\ 3.png");
+      width: 20%;
+      height: 20%;
+      @include backgroundRCC();
+      z-index: -1;
+    }
   }
 
   .engage {
     .image {
-      align-items: center;
+      background: url("../../assets/Ellipse\ 2.png");
+      @include backgroundRCC();
       img {
         max-width: 150px;
       }
     }
+  }
+  .explore {
+    .image {
+      background: url("../../assets/Ellipse\ 1.png");
+      @include backgroundRCC();
+    }
+  }
+  .varieties {
+    padding: 1rem;
+    line-height: 2.5rem;
+    background: url("../../assets/Ellipse\ 7.png");
+    @include backgroundRCC();
+    background-size: 200px;
   }
   nav {
     z-index: 100;
@@ -97,7 +175,20 @@
     }
   }
   .newslater {
+    position: relative;
     @include central-flex(center, column);
+    p:before {
+      content: "";
+      position: absolute;
+      top: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: url("../../assets/Ellipse\ 4.png");
+      width: 30%;
+      height: 30%;
+      @include backgroundRCC();
+      z-index: -1;
+    }
     form {
       text-align: center;
       input {
@@ -117,16 +208,22 @@
       text-align: center;
       max-width: 200px;
       img {
-        width: 100%;
+        width: 80%;
       }
     }
     background: $footer-color;
     @include central-flex(center, column);
     .links {
       @include central-flex(center, column);
+      .link {
+        transition: all 0.5s ease;
+        margin: 5px;
+        cursor: pointer;
+      }
+      .link:hover {
+        color: teal;
+      }
       button {
-        background: rgba(255, 255, 255, 0);
-        margin: 5px 0;
       }
     }
     .start {
@@ -143,7 +240,7 @@
   }
 
   // media queries for tablet screens and above
-  @media only screen and (min-width: 480px) {
+  @media only screen and (min-width: 600px) {
     section {
       @include central-flex(space-between);
       .image {
@@ -171,7 +268,7 @@
       }
       .links {
         flex-direction: row;
-        button {
+        .link {
           margin: 15px;
           font-weight: 600;
         }

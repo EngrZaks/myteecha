@@ -20,6 +20,8 @@ const Section: React.FC<section> = ({ heading, p, btnTxt, img_url }) => {
     ? "varieties"
     : heading.toLocaleLowerCase().includes("learning")
     ? "student"
+    : heading.toLocaleLowerCase().includes("explore")
+    ? "explore"
     : "";
 
   return (

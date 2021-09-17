@@ -16,10 +16,10 @@ export default function Footer() {
         Get Started
       </Button>
       <div className="links">
-        <Button>ABOUT US</Button>
-        <Button>TERMS AND CONDITIONS</Button>
-        <Button>PRIVACY POLICY</Button>
-        <Button>REVIEWS</Button>
+        <div className="link">ABOUT US</div>
+        <div className="link">TERMS AND CONDITIONS</div>
+        <div className="link">PRIVACY POLICY</div>
+        <div className="link">REVIEWS</div>
       </div>
       <div className="social">
         <FacebookOutlined />
