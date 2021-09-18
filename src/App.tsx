@@ -4,18 +4,12 @@ import { useAuthState } from "react-firebase-hooks/auth";
 // import { useCollectionData } from "react-firebase-hooks/firestore";
 import Home from "./components/landing";
 import Dashboard from "./components/dashboard";
-import {
-  Route,
-  HashRouter,
-  BrowserRouter as Router,
-  Switch,
-  Link,
-} from "react-router-dom";
+import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 import Admin from "./components/admin";
 import Explore from "./components/dashboard/explore/explore";
 import { DesktopMenu, MobileMenu } from "./components/dashboard/menu";
 import { useMediaQuery } from "react-responsive";
-import { Skeleton } from "antd";
+// import { Skeleton } from "antd";
 const auth = firebase.auth();
 // firebase.analytics();
 function App() {

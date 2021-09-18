@@ -1,5 +1,5 @@
 import React from "react";
-import { Form, Input, Button,  Card } from "antd";
+import { Form, Input, Button, Card } from "antd";
 import firebase from "../../../firebase";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 // import Courses from "./courses";
@@ -15,7 +15,7 @@ export default function Course() {
 
   const Upload = () => {
     const [Loading, setLoading] = React.useState(false);
-    const [upload, setUpload] = React.useState(false);
+    // const [upload, setUpload] = React.useState(false);
 
     const onFinish = async (values: any) => {
       const uid = auth.currentUser?.uid;
