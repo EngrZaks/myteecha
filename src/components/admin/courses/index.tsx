@@ -1,5 +1,5 @@
 import React from "react";
-import { Form, Input, Button, Divider, Card } from "antd";
+import { Form, Input, Button,  Card } from "antd";
 import firebase from "../../../firebase";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 // import Courses from "./courses";

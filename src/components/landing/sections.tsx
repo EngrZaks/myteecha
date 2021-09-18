@@ -1,5 +1,8 @@
 // import React from "react";
 // import { Button } from "antd";
+import { useDispatch } from "react-redux";
+import { bindActionCreators } from "redux";
+import { actionCreators } from "../../state";
 import homeContents from "./homeContents";
 interface section {
   heading: string;
@@ -8,8 +11,8 @@ interface section {
   img_url: any;
 }
 const Section: React.FC<section> = ({ heading, p, btnTxt, img_url }) => {
-  //custom class names
-
+  const dispatch = useDispatch();
+  const { displaySigUp } = bindActionCreators(actionCreators, dispatch);
   const customClass: string = heading
     .toLocaleLowerCase()
     .includes("course interactive")
@@ -23,6 +26,9 @@ const Section: React.FC<section> = ({ heading, p, btnTxt, img_url }) => {
     : heading.toLocaleLowerCase().includes("explore")
     ? "explore"
     : "";
+  const handleClick = heading.toLocaleLowerCase().includes("interactive")
+    ? displaySigUp
+    : () => console.log("button clicked");
 
   return (
     <section className={`${customClass}`}>
@@ -38,10 +44,7 @@ const Section: React.FC<section> = ({ heading, p, btnTxt, img_url }) => {
         {btnTxt && (
           <div>
             {" "}
-            <button
-              onClick={() => console.log("click")}
-              style={{ borderRadius: 10 }}
-            >
+            <button onClick={handleClick} style={{ borderRadius: 10 }}>
               {btnTxt}
             </button>
           </div>
@@ -51,14 +54,6 @@ const Section: React.FC<section> = ({ heading, p, btnTxt, img_url }) => {
   );
 };
 export default function Sections() {
-  // homeContents: [
-  //   {
-  //     heading: string;
-  //     p: string;
-  //     btnTxt: string;
-  //     img_url: any;
-  //   }
-  // ]
   return (
     <>
       {homeContents.map((content, i) => (

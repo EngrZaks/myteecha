@@ -12,6 +12,8 @@ import Sections from "./sections";
 import Footer from "./footer";
 import SignUp from "../signup";
 import LogIn from "../signin";
+import firebase from "../../firebase";
+const firestore = firebase.firestore();
 
 const LandindPage: React.FC = () => {
   const isMobile = useMediaQuery({ query: "(max-width: 600px)" });
@@ -23,6 +25,30 @@ const LandindPage: React.FC = () => {
     actionCreators,
     dispatch
   );
+  const [subscribed, setSubscribed] = React.useState(false);
+  const [loading, setLoading] = React.useState(false);
+  const [buttonDisabled, setButtonDisabled] = React.useState(false);
+  const mailRef = firestore.collection("mailing");
+  const finish = async (values: any) => {
+    setLoading(true);
+
+    await mailRef.add({ email: values.email }).then(
+      () => {
+        console.log("subscribed!");
+        setSubscribed(true);
+        setLoading(false);
+        setButtonDisabled(true);
+      },
+      (err) => {
+        console.log("failed to subscribe");
+        setLoading(false);
+        setButtonDisabled(true);
+      }
+    );
+  };
+  const onFinishFailed = (errorInfo: any) => {
+    console.log("Failed:", errorInfo);
+  };
   return (
     <div className="home">
       {isMobile ? (
@@ -50,17 +76,27 @@ const LandindPage: React.FC = () => {
       <section className="newslater">
         <h2>MyTeecha</h2>
         <p>Want MyTeecha's email newslater?</p>
-        <Form>
+        <Form onFinish={finish} onFinishFailed={onFinishFailed}>
           <Form.Item
-            name="username"
+            name="email"
             rules={[{ required: true, message: "Please input your email!" }]}
           >
-            <Input
-              placeholder="Your email address"
-              style={{ textAlign: "center" }}
-            />
+            {subscribed ? (
+              <h2>thanks for subscribing 🙏</h2>
+            ) : (
+              <Input
+                placeholder="Your email address"
+                style={{ textAlign: "center" }}
+              />
+            )}
           </Form.Item>
-          <Button shape="round" type="primary" htmlType="submit">
+          <Button
+            shape="round"
+            type="primary"
+            htmlType="submit"
+            loading={loading}
+            disabled={buttonDisabled}
+          >
             Subscribe
           </Button>
           <p>
