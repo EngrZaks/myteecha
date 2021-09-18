@@ -9,7 +9,7 @@ import {
   ProfileOutlined,
   CreditCardOutlined,
 } from "@ant-design/icons";
-import { BrowserRouter as Router, NavLink, useHistory } from "react-router-dom";
+import { BrowserRouter as Router, NavLink } from "react-router-dom";
 import { BsBook } from "react-icons/bs";
 import { MdForum } from "react-icons/md";
 import { AiOutlineStar } from "react-icons/ai";
@@ -19,7 +19,7 @@ import upgradeM from "../../assets/upgradeM.png";
 const { SubMenu } = Menu;
 
 export function DesktopMenu({ user, auth }: { user: any; auth: any }) {
-  const history = useHistory();
+  // const history = useHistory();
   const [collapsed, setCollapssed] = React.useState(false);
   const [Upgrade, setUpgrade] = React.useState(false);
 
