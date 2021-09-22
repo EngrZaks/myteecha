@@ -1,10 +1,11 @@
 import React from "react";
 import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 // import { useMediaQuery } from "react-responsive";
-// import firebase from "../../firebase";
+import firebase from "../../firebase";
 // import { DesktopMenu, MobileMenu } from "./menu";
 import Explore from "./explore/explore";
-// const auth = firebase.auth();
+import Profile from "./profile/profile";
+const auth = firebase.auth();
 export default function Dashboard({ user }: { user: any }) {
   console.log(user);
   // const isMobile = useMediaQuery({ query: "(max-width: 600px)" });
@@ -21,6 +22,9 @@ export default function Dashboard({ user }: { user: any }) {
       <Switch>
         <Route exact path="/explore">
           <Explore user={user} />
+        </Route>
+        <Route exact path="/profile">
+          <Profile user={user} auth={auth} />
         </Route>
       </Switch>
     </Router>
