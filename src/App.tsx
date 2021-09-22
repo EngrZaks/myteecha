@@ -34,14 +34,14 @@ function App() {
     <Router>
       {user ? <Menu /> : ""}
       <Switch>
-        <Route exact path="/admin">
-          <Admin />
-        </Route>
-        <Route exact path="/explore">
-          <Explore user={user} />
-        </Route>
         <Route exact path="/">
           <AppComponent />
+        </Route>
+        <Route path="/admin">
+          <Admin />
+        </Route>
+        <Route path="/explore">
+          <Explore user={user} />
         </Route>
       </Switch>
     </Router>

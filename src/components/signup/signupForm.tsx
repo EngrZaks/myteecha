@@ -12,44 +12,19 @@ const auth = firebase.auth();
 const SignupForm = () => {
   const [Loading, setLoading] = useState(false);
   const [ErrorMsg, setErrorMsg] = useState("");
-  const authWith =
-    (service?: string, email?: string, password?: string, name?: string) =>
-    (event: any) => {
-      if (email && password && name) {
-        firebase
-          .auth()
-          .createUserWithEmailAndPassword(email, password)
-          .then((userCredential) => {
-            console.log(userCredential.user);
-          })
-          .catch((error) => {
-            console.log(error.code, error.message);
-            setErrorMsg(error.message);
-          });
-      } else {
-        const provider =
-          service === "google"
-            ? new firebase.auth.GoogleAuthProvider()
-            : new firebase.auth.FacebookAuthProvider();
+  const authWith = (service?: string) => (event: any) => {
+    const provider =
+      service === "google"
+        ? new firebase.auth.GoogleAuthProvider()
+        : new firebase.auth.FacebookAuthProvider();
 
-        auth.signInWithPopup(provider);
-      }
-    };
+    auth.signInWithPopup(provider);
+  };
   const onFinish = async (values: any) => {
     setErrorMsg("");
     setLoading(true);
     values.role = "student";
     try {
-      // await axios.post(BACKEND_URL + "/signup", values).then(
-      //   (response) => {
-      //     console.log(response.data);
-      //     setLoading(false);
-      //   },
-      //   (error) => {
-      //     setErrorMsg(error.response.data);
-      //     setLoading(false);
-      //   }
-      // );
       firebase
         .auth()
         .createUserWithEmailAndPassword(values.email, values.password)

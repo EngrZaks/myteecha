@@ -31,7 +31,6 @@ const LandindPage: React.FC = () => {
   const mailRef = firestore.collection("mailing");
   const finish = async (values: any) => {
     setLoading(true);
-
     await mailRef.add({ email: values.email }).then(
       () => {
         console.log("subscribed!");
@@ -43,6 +42,7 @@ const LandindPage: React.FC = () => {
         console.log("failed to subscribe");
         setLoading(false);
         setButtonDisabled(true);
+        return;
       }
     );
   };
