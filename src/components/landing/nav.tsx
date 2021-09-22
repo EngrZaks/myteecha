@@ -49,12 +49,12 @@ export const MobileNav: React.FC<singinSignupParams> = ({
               <Link to="for-student">For Student</Link>
             </Menu.Item>
             <Menu.Item key="3">
-              <Link to="/" onClick={showSignin}>
+              <Link to="" onClick={showSignin}>
                 Log in
               </Link>
             </Menu.Item>
             <Menu.Item key="4">
-              <Link to="/" onClick={showSignup}>
+              <Link to="" onClick={showSignup}>
                 Sign Up
               </Link>
             </Menu.Item>
@@ -100,12 +100,12 @@ export const DesktopNav: React.FC<singinSignupParams> = ({
             <Link to="/for-student">For Student</Link>
           </li>
           <li>
-            <Link to="/" onClick={showSignin}>
+            <Link to="" onClick={showSignin}>
               Log in
             </Link>
           </li>
           <li>
-            <Link to="/" onClick={showSignup}>
+            <Link to="" onClick={showSignup}>
               Sign Up
             </Link>
           </li>

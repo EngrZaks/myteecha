@@ -27,24 +27,33 @@ const LandindPage: React.FC = () => {
   );
   const [subscribed, setSubscribed] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
+  const [subscribeError, setSubscribeError] = React.useState("");
   const [buttonDisabled, setButtonDisabled] = React.useState(false);
   const mailRef = firestore.collection("mailing");
   const finish = async (values: any) => {
     setLoading(true);
-    await mailRef.add({ email: values.email }).then(
-      () => {
-        console.log("subscribed!");
-        setSubscribed(true);
-        setLoading(false);
-        setButtonDisabled(true);
-      },
-      (err) => {
-        console.log("failed to subscribe");
-        setLoading(false);
-        setButtonDisabled(true);
-        return;
-      }
-    );
+    try {
+      await mailRef.add({ email: values.email }).then(
+        () => {
+          console.log("subscribed!");
+          setSubscribed(true);
+          setLoading(false);
+          setButtonDisabled(true);
+          setSubscribeError("");
+        },
+        (err) => {
+          console.log("failed to subscribe");
+          setLoading(false);
+          setButtonDisabled(true);
+          setSubscribeError(err.message);
+        }
+      );
+    } catch (error) {
+      console.log("server down or network error", error);
+      setLoading(false);
+      setSubscribed(false);
+      setSubscribeError("server down or network error");
+    }
   };
   const onFinishFailed = (errorInfo: any) => {
     console.log("Failed:", errorInfo);
@@ -76,6 +85,8 @@ const LandindPage: React.FC = () => {
       <section className="newslater">
         <h2>MyTeecha</h2>
         <p>Want MyTeecha's email newslater?</p>
+        {subscribeError && <div>{subscribeError}</div>}
+
         <Form onFinish={finish} onFinishFailed={onFinishFailed}>
           <Form.Item
             name="email"
