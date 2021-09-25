@@ -1,4 +1,4 @@
-import { Button, Form, Input } from "antd";
+import { Button, Form, Input, Skeleton } from "antd";
 import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { FcGoogle } from "react-icons/fc";
@@ -83,6 +83,6 @@ export default function Admin() {
       )}
     </div>
   ) : (
-    <p>loading admin login</p>
+    <Skeleton />
   );
 }

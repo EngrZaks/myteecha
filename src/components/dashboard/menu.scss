@@ -3,6 +3,8 @@
   bottom: 0;
   width: 100vw;
   // height: 5rem;
+  background-color: white;
+  z-index: 1;
   .menu {
     display: flex;
     align-items: center;
@@ -24,6 +26,7 @@
   }
 }
 .DesktopMenu {
+  position: fixed;
   .profileImage,
   .upgradeIcon {
     width: 40px;

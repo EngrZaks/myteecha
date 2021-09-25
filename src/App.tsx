@@ -3,12 +3,17 @@ import firebase from "./firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 // import { useCollectionData } from "react-firebase-hooks/firestore";
 import Home from "./components/landing";
-import Dashboard from "./components/dashboard";
-import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
+import {
+  Route,
+  BrowserRouter as Router,
+  Switch,
+  Redirect,
+} from "react-router-dom";
 import Admin from "./components/admin";
 import Explore from "./components/dashboard/explore/explore";
 import { DesktopMenu, MobileMenu } from "./components/dashboard/menu";
 import { useMediaQuery } from "react-responsive";
+import Profile from "./components/dashboard/profile/profile";
 // import { Skeleton } from "antd";
 const auth = firebase.auth();
 // firebase.analytics();
@@ -16,9 +21,7 @@ function App() {
   const isMobile = useMediaQuery({ query: "(max-width: 600px)" });
 
   const [user] = useAuthState(auth);
-  const AppComponent = () => (
-    <div className="App">{user ? <Dashboard user={user} /> : <Home />}</div>
-  );
+
   const Menu = () => {
     return (
       <div>
@@ -34,14 +37,21 @@ function App() {
     <Router>
       {user ? <Menu /> : ""}
       <Switch>
-        <Route exact path="/">
-          <AppComponent />
-        </Route>
+        <Route
+          exact
+          path="/"
+          render={() => (user ? <Redirect to="/explore" /> : <Home />)}
+        />
+        {/* <AppComponent /> */}
+
         <Route path="/admin">
           <Admin />
         </Route>
         <Route path="/explore">
-          <Explore user={user} />
+          {user ? <Explore user={user} /> : <Home />}
+        </Route>
+        <Route path="/profile">
+          {user ? <Profile user={user} auth={auth} /> : <Home />}
         </Route>
       </Switch>
     </Router>

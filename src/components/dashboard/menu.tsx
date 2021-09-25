@@ -8,6 +8,7 @@ import {
   QuestionCircleOutlined,
   ProfileOutlined,
   CreditCardOutlined,
+  UserOutlined,
 } from "@ant-design/icons";
 import { BrowserRouter as Router, NavLink } from "react-router-dom";
 import { BsBook } from "react-icons/bs";
@@ -19,7 +20,6 @@ import upgradeM from "../../assets/upgradeM.png";
 const { SubMenu } = Menu;
 
 export function DesktopMenu({ user, auth }: { user: any; auth: any }) {
-  // const history = useHistory();
   const [collapsed, setCollapssed] = React.useState(false);
   const [Upgrade, setUpgrade] = React.useState(false);
 
@@ -65,7 +65,13 @@ export function DesktopMenu({ user, auth }: { user: any; auth: any }) {
           </Menu.Item>
           <SubMenu
             key="sub1"
-            icon={<img className="profileImage" src={user.photoURL} alt="" />}
+            icon={
+              user.photoUrl ? (
+                <img src={user.photoURL} alt="" />
+              ) : (
+                <UserOutlined />
+              )
+            }
             title={user.displayName}
           >
             <Menu.Item key="5" icon={<ProfileOutlined />}>
@@ -117,7 +123,11 @@ export const MobileMenu = ({ user }: { user: any }) => {
           <AiOutlineStar />{" "}
         </NavLink>
         <NavLink activeClassName="active" to="/profile">
-          <img src={user.photoURL} alt="" />
+          {user.photoUrl ? (
+            <img src={user.photoURL} alt="" />
+          ) : (
+            <UserOutlined />
+          )}
         </NavLink>
       </div>
     </div>
