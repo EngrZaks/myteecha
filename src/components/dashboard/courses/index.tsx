@@ -1,5 +1,3 @@
-import React from "react";
-
 export default function Courses() {
-  return <div></div>;
+  return <div>courses you've started will appear hear</div>;
 }

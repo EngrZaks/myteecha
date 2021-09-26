@@ -1,6 +1,6 @@
 import React from "react";
 import { Menu, Button } from "antd";
-import "./style.scss";
+import "../style.scss";
 import {
   MenuUnfoldOutlined,
   MenuFoldOutlined,
@@ -15,8 +15,8 @@ import { BsBook } from "react-icons/bs";
 import { MdForum } from "react-icons/md";
 import { AiOutlineStar } from "react-icons/ai";
 import { HiOutlineSearchCircle } from "react-icons/hi";
-import upgrade from "../../assets/upgrade.png";
-import upgradeM from "../../assets/upgradeM.png";
+import upgrade from "../../../assets/upgrade.png";
+import upgradeM from "../../../assets/upgradeM.png";
 const { SubMenu } = Menu;
 
 export function DesktopMenu({ user, auth }: { user: any; auth: any }) {

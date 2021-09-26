@@ -1,5 +1,3 @@
-import React from "react";
-
 export default function Chats() {
-  return <div></div>;
+  return <div>chat in forumes</div>;
 }

@@ -1,5 +1,4 @@
 import { Card, Col, Row, Skeleton } from "antd";
-import React from "react";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 import firebase from "../../../firebase";
 import Complete from "./search";
@@ -36,7 +35,7 @@ export default function Explore({ user }: { user: any }) {
           })}
         </Row>
       ) : (
-        <Skeleton loading />
+        <Skeleton loading={true} />
       )}
     </div>
   );
